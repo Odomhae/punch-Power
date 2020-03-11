@@ -28,12 +28,12 @@ override fun onSensorChanged(event: SensorEvent?) {
 
 <p align="center">
    <img src ="https://user-images.githubusercontent.com/29934506/76325465-acf90a80-632a-11ea-984c-4fb06669261e.png" width=200 height =350/>  <img src ="https://user-images.githubusercontent.com/29934506/76326845-90f66880-632c-11ea-9665-81b31d0a9294.jpg" width=200 height =350/> 
-                                                 *Edit NumberFormat*
-<br> 
+            
+<br>            
 <img src ="https://user-images.githubusercontent.com/29934506/76397916-4e31a080-63bf-11ea-9b97-036e77705e46.png" width=200 height =350/>
 </p>
-
-
+      
+                                                   *Edit NumberFormat* 
 
 ## The score range is very wide.
 ## Ranking button not available.
