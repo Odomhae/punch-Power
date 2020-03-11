@@ -2,6 +2,7 @@ package com.example.punchpower
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_result.*
 import java.text.NumberFormat
 
@@ -17,9 +18,10 @@ class resultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         // 위에 제목
-        title = "Punch Power Result"
-        //소수 반올림해서 정수로 점수표시
-        scoreLabel.text = "${String.format("%.0f",power)}"
+        title = "Result"
+        // 정수로 바꾸고 쉼표 표시해서
+        // 점수표시
+        scoreLabel.text = NumberFormat.getInstance().format(power.toInt())
 
         // 다시하기 버튼
         restartButton.setOnClickListener {

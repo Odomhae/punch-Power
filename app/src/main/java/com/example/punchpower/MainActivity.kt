@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity() {
     var startTime = System.currentTimeMillis()// OL
 
     // 센서 관리자 객체
-    val senSorManager :SensorManager by lazy {
+    private val senSorManager :SensorManager by lazy {
         getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
     // 센서 이벤트 처리하는 리스너
-    val eventListener : SensorEventListener = object  : SensorEventListener{
+    private val eventListener : SensorEventListener = object  : SensorEventListener{
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         }
 
@@ -40,12 +40,6 @@ class MainActivity : AppCompatActivity() {
                     Math.pow(event.values[0].toDouble(), 2.0) +  Math.pow(event.values[1].toDouble(), 2.0) +
                             Math.pow(event.values[2].toDouble(), 2.0)
 
-                Log.d("0",event.values[0].toDouble().toString() )
-                Log.d("1",event.values[1].toDouble().toString() )
-                Log.d("2",event.values[2].toDouble().toString() )
-
-                Log.d("Not max power : ", power.toString())
-
                 if(power > 20 && !isStart){
                     //측정시작
                     startTime = System.currentTimeMillis()
@@ -54,14 +48,17 @@ class MainActivity : AppCompatActivity() {
 
                 // 측정이 시작된 경우
                 if(isStart){
-                    //애니메이션 제거
-                    imageView.clearAnimation()
+                    //애니메이션 변경
+                    // imageView.clearAnimation()
+                    val animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.rotate)
+                    imageView.startAnimation(animation)
+
                     if(maxPower < power)
                     {
                         maxPower = power
-                        Log.d("1111111",event.values[0].toDouble().toString() )
-                        Log.d("22222222",event.values[1].toDouble().toString() )
-                        Log.d("33333333",event.values[2].toDouble().toString() )
+                        Log.d("11",event.values[0].toString() )
+                        Log.d("22",event.values[1].toDouble().toString() )
+                        Log.d("33",event.values[2].toDouble().toString() )
 
                         Log.d("MaxPower : ", power.toString())
                     }
@@ -73,7 +70,6 @@ class MainActivity : AppCompatActivity() {
                         isStart = false
 
                         punchPowerTestComplete(maxPower)
-
                     }
                 }
             }
@@ -82,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // 게임 초기화
-    fun initGame(){
+    private fun initGame(){
         maxPower = 0.0
         isStart = false
         startTime =  System.currentTimeMillis()// OL
@@ -96,14 +92,9 @@ class MainActivity : AppCompatActivity() {
             SensorManager.SENSOR_DELAY_NORMAL
         )
 
-        // anim 폴더의 tran 애니메이션 속성을 적용함
-       // imageView.startAnimation(AnimationUtils.loadAnimation(this@MainActivity, R.anim.tran))
-        // anim 폴더의 rotate 애니메이션 속성을 적용함
-       // imageView.startAnimation(AnimationUtils.loadAnimation(this@MainActivity, R.anim.rotate))
-        // anim 폴더의 alpha_scale 애니메이션 속성을 적용함
-       // imageView.startAnimation(AnimationUtils.loadAnimation(this@MainActivity, R.anim.alpha_scale))
 
         // 애니메이션 시작
+        // anim 폴더의 alpha_scale 애니메이션 속성을 적용함
         val animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.alpha_scale)
         imageView.startAnimation(animation)
 
