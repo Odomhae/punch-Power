@@ -2,7 +2,7 @@
 ## Originally, it was made as a punch speed measurement, but just swing as much as you can :)
 
 <p align="center">
-<img src ="https://user-images.githubusercontent.com/29934506/76324753-cd749500-6329-11ea-845d-05f3c0670678.png" align ="center" width=200 height =350/>
+<img src ="https://user-images.githubusercontent.com/29934506/76519017-85797d80-64a3-11ea-9e81-762538d96f85.gif" width=200 height =350/>
 </p>
 
 ## Punch as fast as you can , as big as you plz
